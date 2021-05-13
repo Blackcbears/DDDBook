@@ -28,16 +28,20 @@ public class TransferController {
 
     @ApiOperation(value = "111", httpMethod = "GET")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "targetAccountNumber", value = "(true-强制更新 false-不强制更新)", paramType = "query", required = true, dataType = "String"),
-            @ApiImplicitParam(name = "amount", value = "版本号 如: 100", paramType = "query", required = true, dataType = "BigDecimal"),})
+            @ApiImplicitParam(name = "targetAccountNumber", value = "转账对象", paramType = "query", required = true, dataTypeClass = String.class),
+            @ApiImplicitParam(name = "amount", value = "转账金额", paramType = "query", required = true, dataTypeClass = BigDecimal.class),})
     @RequestMapping(value = "/a")
     public boolean transfer(String targetAccountNumber, BigDecimal amount, @NotNull HttpSession session) {
         long userId;
-        userId = 1L;
+        userId = 1392839111554547713L;
         return transferService.transfer(userId, targetAccountNumber, amount, "CNY");
     }
 
     @ApiOperation(value = "2222", httpMethod = "GET")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "accountNumber", value = "员工编号", paramType = "query", required = true, dataTypeClass = String.class),
+            @ApiImplicitParam(name = "currency", value = "币种", paramType = "query", required = true, dataTypeClass = String.class),
+            @ApiImplicitParam(name = "dailyLimit", value = "限制金额", paramType = "query", required = true, dataTypeClass = BigDecimal.class),})
     @RequestMapping(value = "/b")
     public String test(String accountNumber, String currency, BigDecimal dailyLimit) {
         return transferService.createAccount(accountNumber, currency, dailyLimit);

@@ -31,6 +31,7 @@ public class Account implements Entity {
         this.userId = userId;
         this.available = available;
         this.dailyLimit = dailyLimit;
+        this.id =new AccountId();
     }
     public Currency getCurrency() {
         return this.available.getCurrency();

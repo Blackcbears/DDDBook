@@ -19,7 +19,7 @@ public class AccountTransferServiceImpl implements AccountTransferService {
     @Override
     public void transfer(Account sourceAccount, Account targetAccount, Money targetMoney, ExchangeRate exchangeRate) {
         Money sourceMoney = exchangeRate.exchangeTo(targetMoney);
-        sourceAccount.deposit(sourceMoney);
-        targetAccount.withdraw(targetMoney);
+        sourceAccount.withdraw(sourceMoney);
+        targetAccount.deposit(targetMoney);
     }
 }

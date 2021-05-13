@@ -54,8 +54,8 @@ public class TransferServiceImpl implements TransferService {
 
     @Override
     public String createAccount(String accountNumber,String currency,BigDecimal dailyLimit) {
-        Money money = new Money(new BigDecimal(0), new Currency("CNY"));
-        Money dailyLimitMoney = new Money(dailyLimit, new Currency("CNY"));
+        Money money = new Money(new BigDecimal(0), new Currency(currency));
+        Money dailyLimitMoney = new Money(dailyLimit, new Currency(currency));
         UserId userId = new UserId();
         AccountNumber accountNumber1 = new AccountNumber(accountNumber);
 

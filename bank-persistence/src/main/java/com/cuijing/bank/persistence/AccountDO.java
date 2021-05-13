@@ -1,6 +1,7 @@
 package com.cuijing.bank.persistence;
 
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -15,7 +16,8 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class AccountDO {
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "snowFlakeId")
+    @GenericGenerator(name = "snowFlakeId", strategy = "com.cuijing.bank.tools.SnowflakeId")
     private Long id;
     private String accountNumber;
     private Long userId;

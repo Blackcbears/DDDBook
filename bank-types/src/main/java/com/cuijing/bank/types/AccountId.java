@@ -19,5 +19,7 @@ public class AccountId implements ValueObject {
         this.value = value;
     }
 
-
+    public AccountId() {
+        this.value = null;
+    }
 }
